@@ -4,6 +4,7 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  UseGuards,
 } from '@nestjs/common';
 import { ValuationService } from './valuation.service';
 import {
@@ -14,6 +15,7 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 import { Valuation } from './valuation.entity';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiTags('Valuation')
 @Controller('valuation')
@@ -21,6 +23,7 @@ export class ValuationController {
   constructor(private readonly valuationService: ValuationService) {}
 
   @Get(':vin')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({
     summary: 'Get Vehicle"s latest valuation details',
     description: 'Get the latest valuation details for a vehicle ',

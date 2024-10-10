@@ -5,11 +5,13 @@ import {
   HttpException,
   HttpStatus,
   Get,
+  UseGuards,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service';
 import { CreateVehicleDto } from './vehicle.dto';
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiFoundResponse,
   ApiInternalServerErrorResponse,
@@ -17,6 +19,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Vehicle } from './vehicle.entity';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiTags('Vehicle')
 @Controller('vehicle')
@@ -24,6 +27,8 @@ export class VehicleController {
   constructor(private vehicleService: VehicleService) {}
 
   @Post('/create')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Create Vehicle Details',
     description: 'Add a new vehicle details into the application',
@@ -55,6 +60,8 @@ export class VehicleController {
   }
 
   @Get('/findAll')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Get All the Vehicles',
     description:

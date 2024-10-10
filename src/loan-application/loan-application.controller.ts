@@ -5,9 +5,11 @@ import {
   HttpStatus,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
   ApiOperation,
@@ -19,6 +21,7 @@ import {
   CreateLoanApplicationDto,
   UpdateLoanApplicationStatusDTO,
 } from './loan-application.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiTags('Loan Application')
 @Controller('loan-application')
@@ -28,6 +31,8 @@ export class LoanApplicationController {
   ) {}
 
   @Post('/apply')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Apply a loan application',
     description: 'Apply a single loan application for a vehicle ',
@@ -59,6 +64,8 @@ export class LoanApplicationController {
   }
 
   @Patch('status')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Change status for a loan application',
     description: 'Change the status of an application',

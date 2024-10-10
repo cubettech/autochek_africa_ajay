@@ -57,3 +57,13 @@ The Autochek project is a backend API built with NestJS, TypeORM, and SQLite. It
 ## Usage
 
 Once the application is running, you can access the API endpoints at http://localhost:3030/api/docs to access Swagger UI to interact with the API.
+
+### Key Updates:
+
+1. **User Authentication Section**: Added a section explaining the sign-up and sign-in functionality.
+
+2. **JWT Secret**: Mentioned adding a `JWT_SECRET` environment variable for authentication.
+
+3. **Example API Endpoints**: Included examples of API endpoints related to loan applications and user authentication.
+
+This README will help users understand the functionality and how to get started with the Autochek API, including the user authentication module.

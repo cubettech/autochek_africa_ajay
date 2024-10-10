@@ -7,6 +7,8 @@ import { ValuationModule } from './valuation/valuation.module';
 import { ConfigModule } from '@nestjs/config';
 import { LoanApplicationModule } from './loan-application/loan-application.module';
 import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { SharedModule } from './shared/shared.module';
     ValuationModule,
     LoanApplicationModule,
     SharedModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
