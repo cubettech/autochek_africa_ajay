@@ -49,6 +49,8 @@ The Autochek project is a backend API built with NestJS, TypeORM, and SQLite. It
     RAPIDAPI_VLOOKUP_URL=your_rapidapi_url
     RAPIDAPI_KEY=your_rapidapi_key
     RAPIDAPI_HOST=your_rapidapi_host
+    LTV_RATIO=YOUR_LTV_RATIO
+    JWT_SECRET=a_secure_secret_for_jwt
    ```
 
 4. Run the application:
