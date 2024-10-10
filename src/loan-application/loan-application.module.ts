@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { LoanApplicationController } from './loan-application.controller';
 import { LoanApplicationService } from './loan-application.service';
-import { ValuationService } from 'src/valuation/valuation.service';
-import { VehicleService } from 'src/vehicle/vehicle.service';
+import { ValuationService } from '../valuation/valuation.service';
+import { VehicleService } from '../vehicle/vehicle.service';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({

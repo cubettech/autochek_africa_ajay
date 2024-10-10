@@ -1,4 +1,4 @@
-import { Vehicle } from 'src/vehicle/vehicle.entity';
+import { Vehicle } from '..//vehicle/vehicle.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

@@ -10,6 +10,7 @@ import {
   ApiBadRequestResponse,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
+  ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
 import { LoanApplicationService } from './loan-application.service';
@@ -27,6 +28,10 @@ export class LoanApplicationController {
   ) {}
 
   @Post('/apply')
+  @ApiOperation({
+    summary: 'Apply a loan application',
+    description: 'Apply a single loan application for a vehicle ',
+  })
   @ApiCreatedResponse({
     description: 'Created Loan Application Successfully',
     type: LoanApplication,
@@ -54,6 +59,10 @@ export class LoanApplicationController {
   }
 
   @Patch('status')
+  @ApiOperation({
+    summary: 'Change status for a loan application',
+    description: 'Change the status of an application',
+  })
   @ApiCreatedResponse({
     description: 'Loan Application Status Updated Successfully',
   })

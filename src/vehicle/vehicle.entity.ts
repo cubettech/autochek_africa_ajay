@@ -1,5 +1,5 @@
-import { LoanApplication } from 'src/loan-application/loan-application.entity';
-import { Valuation } from 'src/valuation/valuation.entity';
+import { LoanApplication } from '../loan-application/loan-application.entity';
+import { Valuation } from '../valuation/valuation.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('vehicle')

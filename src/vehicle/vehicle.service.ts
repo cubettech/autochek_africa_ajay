@@ -10,7 +10,7 @@ import {
 import { DataSource, Repository } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 import { CreateVehicleDto } from './vehicle.dto';
-import { ErrorHandlerService } from 'src/shared/services/error-handler.service';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable()
 export class VehicleService {
@@ -75,6 +75,23 @@ export class VehicleService {
       this.errorHandlerService.handleServiceErrors(
         error,
         'getVehicleByVin',
+        this.logger,
+      );
+    }
+  }
+
+  async getAllVehicles(): Promise<Vehicle[]> {
+    try {
+      const vehicles = await this.vehicleRepository.find();
+      if (!vehicles.length) {
+        this.logger.warn(`No Vehicles Exist!`);
+        throw new NotFoundException('No Vehicles Exist!');
+      }
+      return vehicles;
+    } catch (error) {
+      this.errorHandlerService.handleServiceErrors(
+        error,
+        'getAllVehicles',
         this.logger,
       );
     }

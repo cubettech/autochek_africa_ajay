@@ -9,8 +9,8 @@ import { lastValueFrom } from 'rxjs';
 import { VehicleValuationResponse } from './valuation.dto';
 import { Valuation } from './valuation.entity';
 import { DataSource, Repository } from 'typeorm';
-import { VehicleService } from 'src/vehicle/vehicle.service';
-import { ErrorHandlerService } from 'src/shared/services/error-handler.service';
+import { VehicleService } from '../vehicle/vehicle.service';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable()
 export class ValuationService {

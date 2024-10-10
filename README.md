@@ -57,14 +57,3 @@ The Autochek project is a backend API built with NestJS, TypeORM, and SQLite. It
 ## Usage
 
 Once the application is running, you can access the API endpoints at http://localhost:3030/api/docs to access Swagger UI to interact with the API.
-
-Example Requests
-Create Vehicle Valuation:
-
-POST /valuation/:vin
-Apply for Loan:
-
-POST /loan-application/apply
-Update Loan Status:
-
-PATCH /loan-application/status

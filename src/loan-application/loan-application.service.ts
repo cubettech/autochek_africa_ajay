@@ -8,15 +8,15 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoanApplication } from './loan-application.entity';
 import { DataSource, Repository } from 'typeorm';
-import { ValuationService } from 'src/valuation/valuation.service';
-import { VehicleService } from 'src/vehicle/vehicle.service';
+import { ValuationService } from '../valuation/valuation.service';
+import { VehicleService } from '../vehicle/vehicle.service';
 import { LoanStatus } from './loan-application.constant';
-import { Vehicle } from 'src/vehicle/vehicle.entity';
+import { Vehicle } from '../vehicle/vehicle.entity';
 import {
   CreateLoanApplicationDto,
   UpdateLoanApplicationStatusDTO,
 } from './loan-application.dto';
-import { ErrorHandlerService } from 'src/shared/services/error-handler.service';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable()
 export class LoanApplicationService {

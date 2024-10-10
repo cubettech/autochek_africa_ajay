@@ -4,13 +4,16 @@ import {
   Post,
   HttpException,
   HttpStatus,
+  Get,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service';
 import { CreateVehicleDto } from './vehicle.dto';
 import {
   ApiBadRequestResponse,
   ApiCreatedResponse,
+  ApiFoundResponse,
   ApiInternalServerErrorResponse,
+  ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
 import { Vehicle } from './vehicle.entity';
@@ -21,6 +24,10 @@ export class VehicleController {
   constructor(private vehicleService: VehicleService) {}
 
   @Post('/create')
+  @ApiOperation({
+    summary: 'Create Vehicle Details',
+    description: 'Add a new vehicle details into the application',
+  })
   @ApiCreatedResponse({
     description: 'Created Vehicle Successfully',
     type: Vehicle,
@@ -39,8 +46,33 @@ export class VehicleController {
         throw error;
       }
 
-      // Log the error for debugging purposes
-      console.error('Error in createVehicle:', error);
+      // Throw an Internal Server Error for unhandled exceptions
+      throw new HttpException(
+        'Something went wrong while creating the vehicle',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  @Get('/findAll')
+  @ApiOperation({
+    summary: 'Get All the Vehicles',
+    description:
+      'Get all the vehicles that are present in the application at this time',
+  })
+  @ApiFoundResponse({
+    description: 'Results Found!',
+    type: Vehicle,
+    isArray: false,
+  })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error' })
+  async getAllVehicles() {
+    try {
+      return await this.vehicleService.getAllVehicles();
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
 
       // Throw an Internal Server Error for unhandled exceptions
       throw new HttpException(

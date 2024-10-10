@@ -11,6 +11,7 @@ import {
   ApiNotFoundResponse,
   ApiInternalServerErrorResponse,
   ApiTags,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Valuation } from './valuation.entity';
 
@@ -20,6 +21,10 @@ export class ValuationController {
   constructor(private readonly valuationService: ValuationService) {}
 
   @Get(':vin')
+  @ApiOperation({
+    summary: 'Get Vehicle"s latest valuation details',
+    description: 'Get the latest valuation details for a vehicle ',
+  })
   @ApiFoundResponse({
     description: 'Fetched Valuation Successfully',
     type: Valuation,
